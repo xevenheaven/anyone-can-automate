@@ -1,0 +1,86 @@
+body {
+	background-color: rgba(6, 151, 215, 0.02);
+	font-family: 'Open Sans', sans-serif;
+}
+
+md-content {
+	background-color: transparent;
+}
+
+ol {
+	padding-left: 15px;
+}
+
+h2 {
+	font-weight: 600;
+	color: #0697d7;
+}
+
+img.icon {
+	display: inline-block;
+	width: 15px;
+}
+
+img.panel-icon {
+	display: inline-block;
+	width: 25px;
+}
+
+.container {
+	width: 60%;
+}
+
+.action-container {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.btn.generate {
+	background-color: #0697d7;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+.panel-heading {
+	background-color: #0697d7;
+	color: #ffffff;
+}
+
+.panel-heading:focus {
+	outline: 0;
+}
+
+.panel-heading .panel-text {
+	display: inline-block;
+	padding-left: 10px;
+	font-size: larger;
+	vertical-align: middle;
+}
+
+.panel-body {
+	border-left: 2px solid #0697d7;
+	border-right: 2px solid #0697d7;
+	border-bottom: 2px solid #0697d7;
+}
+
+.panel-body .panel-left {
+	width: 30%;
+}
+
+.panel-body .panel-text {
+	padding-bottom: 15px;
+}
+
+.panel-body .panel-expected {
+	line-height: 34px;
+}
+
+.panel-body .dropdown .dropdown-toggle {
+	display: inline-flex;
+	justify-content: space-between;
+	min-width: 160px;
+}
+
+.panel-body .dropdown .caret {
+	margin-top: 8px;
+}

@@ -1,1 +1,4 @@
+# OSX Specific Files
+*.DS_Store
+
 node_modules
