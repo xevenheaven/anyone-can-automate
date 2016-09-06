@@ -1,1 +1,109 @@
-<h1>Anyone can automate</h1>
+<html>
+	<head>
+		<!-- Angular Libraries -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+		<script src="//npmcdn.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+		<!-- Angular Material Library -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+		<!-- Bootstrap Library -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Include -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link href="index.css" rel="stylesheet">
+		<script src="index.js"></script>
+	</head>
+
+	<body ng-app="AnyoneCanAutomate" ng-controller="AutomaterCtrl">
+		<md-content class="container" layout="column" layout-align="start center" layout-fill>
+			<div>
+				<h2>Actions Logged In Sequence</h2>
+				<ol>
+					<li>
+						Select the action(s) that you would like testing options and/or expected values for the generation of code.
+					</li>
+					<li>
+						If you have added testing options to the logged actions, there will be a <img src="./icons/checkmark-green.png" class="icon"/> beside the action label. If it is not added, there will be <img src="./icons/cross-grey.png" class="icon"/> to indicate it.
+					</li>
+					<li>
+						After adding the options, you can review on the expected value before clicking on GENERATE CODE button to generate the code for the actions logged and edited.
+					</li>
+				</ol>
+			</div>
+			<div><button type="button" class="btn generate">Generate Code</button></div>
+			<div class="action-container" ng-repeat="action in actionsList">
+				<div class="panel">
+					<div class="panel-heading"
+						layout="row"
+						layout-align="space-between center"
+						ng-click="isCollapsed = !isCollapsed">
+						<div>
+							<img class="panel-icon" ng-if="!action.isAdded" src="./icons/cross.png"/>
+							<img class="panel-icon" ng-if="action.isAdded" src="./icons/checkmark.png">
+							<div class="panel-text">{{action.name}}</div>
+						</div>
+						<div>
+							<img class="panel-icon" ng-if="!isCollapsed" src="./icons/caret-up.png"/>
+							<img class="panel-icon" ng-if="isCollapsed" src="./icons/caret-down.png"/>
+						</div>
+					</div>
+					<div class="panel-body"
+						ng-if="!isCollapsed"
+						layout="row"
+						layout-align="start start"
+						layout-padding>
+						<div class="panel-left" layout="column" layout-align="start start">
+							<div class="panel-text">Testing for:</div>
+							<div>
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle"
+										type="button"
+										id="testOptions"
+										data-toggle="dropdown">
+										<span>{{selectedOption}}</span>
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="testOptions">
+										<li><a href="#" ng-click="selectOption('colour', action)">Colour</a></li>
+										<li><a href="#" ng-click="selectOption('text', action)"">Text</a></li>
+										<li><a href="#" ng-click="selectOption('visible', action)"">Visibility</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div layout="column" layout-align="start start" ng-if="action.actionType">
+							<div class="panel-text">Expected Value:</div>
+							<div class="panel-expected" ng-switch="action.actionType">
+								<div ng-switch-when="colour">
+									Choose your colour:
+									<input type="color" ng-model="action.expectedVal" ng-change="getValue(action)"/>
+								</div>
+								<div ng-switch-when="text">
+									Please input your expected text:
+									<input type="text" ng-model="action.expectedVal" ng-change="getValue(action)"/>
+								</div>
+								<div ng-switch-when="visible">
+									<md-radio-group ng-model="action.expectedVal" ng-change="getValue(action)">
+										<md-radio-button class="md-primary" value="Yes" md-no-ink>
+											Yes, the element is visible!
+										</md-radio-button>
+										<md-radio-button class="md-primary" value="No" md-no-ink>
+											No, the element is not visible.
+										</md-radio-button>
+									</md-radio-group>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</md-content>
+	</body>
+</html>
