@@ -1,52 +1,77 @@
-var viewTest = function (jsoObj) {
-	
-	var actions = JSON.parse(jsoObj);
+var input = `
+{
+	"uri": "some dummy uri",
+	"actions": [
+		{
+			"class": ".addButton",
+			"action": "click"
+		},
+		{
+			"class": ".header",
+			"expected": {
+				"compare": "text",
+				"value": "My Header"
+			}
+		}, {
+				"class": ".asdfdsfsdf button",
+				"action": "click"
+		}, {
+				"class": ".closeButton",
+				"action": "click"
+		},
+		{
+			"class": ".closeButton",
+			"expected": {
+				"compare": "text",
+				"value": "gray"
+			}
+		}
+	]
+}
+`;
+var viewTestItBuilder = require('./viewTestItBuilder.js');
+
+function viewTest(input) {
+
+	//var input = JSON.parse(input);
 	
 	var title = 'some title';
 	var uri = 'some uri';
-	var itBlockString;
-	
-	var viewTestStart =
-		`
-var auth = require('../util/Auth');
-var ss = require('../util/screenshoter');
-var FileBrowser = require('../components/FileBrowser');
 
-describe('ViewWipAttachmentsEdit', function () {
-	this.timeout(60000);
+	var output = `
+		var auth = require('../util/Auth');
+		var ss = require('../util/screenshoter');
+		var FileBrowser = require('../components/FileBrowser');
 
-	var EC = protractor.ExpectedConditions;
-	var fileBrowserTableEl = FileBrowser.getTable();
+		describe('ViewWipAttachmentsEdit', function () {
+			this.timeout(60000);
 
-	before(function () {
-		auth.doLogin();
-		auth.checkAgreementModal();
-		// go to the uri
-	});
+			var EC = protractor.ExpectedConditions;
+			var fileBrowserTableEl = FileBrowser.getTable();
 
-	after(function () {
-		// auth.doLogout();
-	});
+			before(function () {
+				auth.doLogin();
+				auth.checkAgreementModal();
+				browser.get(asdf);
+			});
 
-	afterEach('take a screenshot if a test fails', function () {
-		if (this.currentTest.state === 'failed') {
-			ss.writeSS(this.currentTest.ssName);
-		}
-	});
+			after(function () {
+				// auth.doLogout();
+			});
 
-	${itBlockString}
-	describe('', function () {
-		it('disabled the Add and Remove buttons', function () {
-			this._runnable.ssName = 'ViewWipAttachmentsEdit-disabledButtons';
+			afterEach('take a screenshot if a test fails', function () {
+				if (this.currentTest.state === 'failed') {
+					ss.writeSS(this.currentTest.ssName);
+				}
+			});
 
-			expect(CommandBar.getRemoveButton().getAttribute('disabled')).to.eventually.equal('true');
+			describe('', function () {
+				${viewTestItBuilder(input)}
+			});
+		});`;
 
-			expect(CommandBar.getAddButton().getAttribute('disabled')).to.eventually.equal('true');
-		});
-	});
-});
-		`;
-	return viewTestContent;
-};
+	return output;
+}
 
+//console.log(viewTest(JSON.parse(input)));
 module.exports = viewTest;
