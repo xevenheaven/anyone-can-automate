@@ -9,5 +9,5 @@ app.get('/', function (req, res) {
 app.use(express.static('public'));
 
 app.listen(portNumber, function () {
-	console.log('Example app liatening on port ' + portNumber + '!');
+	console.log('Example app listening on port ' + portNumber + '!');
 });
