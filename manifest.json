@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "Anyone Can Automate!",
+  "description": "This extension triggers a mouse logging process which will then allow users to generate an automated test file.",
+  "version": "1.0",
+
+  "icons": {
+    "48": "logo.png"
+  },
+
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
+
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
