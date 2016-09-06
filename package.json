@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/xevenheaven/anyone-can-automate/issues"
   },
-  "homepage": "https://github.com/xevenheaven/anyone-can-automate#readme"
+  "homepage": "https://github.com/xevenheaven/anyone-can-automate#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1"
+  }
 }
