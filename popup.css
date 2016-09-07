@@ -1,0 +1,52 @@
+body {
+	width: 400px;
+	background-color: rgba(6, 151, 215, 0.02);
+	font-family: 'Open Sans', sans-serif;
+}
+
+md-content {
+	background-color: transparent;
+}
+
+img.logo {
+	width: 30px;
+}
+
+.name {
+	font-size: larger;
+	font-weight: 600;
+	vertical-align: middle;
+}
+
+.instruction-header {
+	font-weight: 600;
+	color: #0697d7;
+}
+
+.instruction-text {
+	font-size: smaller;
+	text-align: center;
+}
+
+.btn .btn-icon {
+	width: 25px;
+}
+
+.btn .btn-text {
+	color: #ffffff;
+	vertical-align: middle;
+	text-transform: uppercase;
+}
+
+.btn.start {
+	background-color: #0697d7;
+	margin-right: 15px;
+}
+
+.btn.stop {
+	background-color: #87bc40;
+}
+
+.btn:focus {
+	outline: 0;
+}
