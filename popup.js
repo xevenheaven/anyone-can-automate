@@ -1,6 +1,14 @@
 angular
 	.module('AnyoneCanAutomate', ['ngMaterial'])
 	.controller('ExtensionCtrl', function ($scope, AutomateCommunicator) {
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			console.log('asdf');
+		}; // Implemented elsewhere.
+		xhr.open("GET", "localhost:3000/writeFile", true);
+		xhr.send();
+
 		$scope.actionsList = [];
 
 		$scope.startLogging = function () {
@@ -46,5 +54,3 @@ angular
 			return AutomateCommunicator;
 		}
 	]);
-
-

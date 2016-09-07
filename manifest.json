@@ -1,37 +1,37 @@
 {
-  "manifest_version": 2,
+	"manifest_version": 2,
 
-  "name": "Anyone Can Automate!",
-  "description": "This extension triggers a mouse logging process which will then allow users to generate an automated test file.",
-  "version": "1.0",
+	"name": "Anyone Can Automate!",
+	"description": "This extension triggers a mouse logging process which will then allow users to generate an automated test file.",
+	"version": "1.0",
 
-  "icons": {
-    "48": "logo.png"
-  },
+	"icons": {
+		"48": "logo.png"
+	},
 
-  "background": {
-    "persistent": false,
-    "scripts": ["background.js"]
-  },
+	"background": {
+		"persistent": false,
+		"scripts": ["background.js"]
+	},
 
-  "permissions": [
-    "tabs",
-    "<all_urls>"
-  ],
+	"permissions": [
+		"tabs",
+		"<all_urls>"
+	],
 
-  "browser_action": {
-    "default_icon": "logo.png",
-    "default_popup": "popup.html"
-  },
+	"browser_action": {
+		"default_icon": "logo.png",
+		"default_popup": "popup.html"
+	},
 
-  "content_scripts": [
-    {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["lib/jquery-3.1.0.min.js", "logger.js"],
-      "run_at": "document_idle",
-      "all_frames": false
-    }
-  ],
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["lib/jquery-3.1.0.min.js", "logger.js"],
+			"run_at": "document_idle",
+			"all_frames": false
+		}
+	],
 
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com; style-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://fonts.googleapis.com; object-src 'self'"
+	"content_security_policy": "script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com; style-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://fonts.googleapis.com; object-src 'self'"
 }
