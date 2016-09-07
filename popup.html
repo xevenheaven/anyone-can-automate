@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="popup.js"></script>
 	</head>
 
-	<body ng-app="AutomateExt" ng-controller="ExtensionCtrl">
+	<body ng-app="AnyoneCanAutomate" ng-controller="ExtensionCtrl">
 		<md-content layout="column" layout-align="start center" layout-padding>
 			<div>
 				<img src="logo.png" class="logo"/>
@@ -32,11 +32,11 @@
 				<div>to move onto the next step.</div>
 			</div>
 			<div>
-				<button class="btn start" id="start">
+				<button class="btn start" ng-click="startLogging()">
 					<img src="public/icons/play.png" class="btn-icon"/>
 					<span class="btn-text">Start</span>
 				</button>
-				<button class="btn stop" id="stop">
+				<button class="btn stop" ng-click="stopLogging()">
 					<img src="public/icons/stop.png" class="btn-icon"/>
 					<span class="btn-text">Stop</span>
 				</button>
