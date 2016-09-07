@@ -4,6 +4,7 @@ var portNumber = 3000;
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var viewTest = require('./viewTest.js');
+var fs = require('fs');
 
 app.use(express.static('public'));
 
@@ -11,17 +12,20 @@ app.get('/', function (req, res) {
 	res.sendfile('./public/index.html');
 });
 
-app.post('/generateViewTest', jsonParser, function (req, res) {	
+app.post('/generateViewTest', jsonParser, function (req, res) {
 	console.log('generateViewTest');
-	
-	var fileName = 'viewTest';
-	
-	res.writeHead(200, {
-		'Content-Type': 'application/force-download',
-		'Content-disposition': 'attachment; filename=' + fileName + '.js'
-	});
 
-	res.end(viewTest(req.body));
+	fs.writeFile("generatedFiles/generatedTest.js", viewTest(req.body), function (err) {
+		if (err) {
+			return console.log(err);
+		}
+	});
+	
+	res.end();
+});
+
+app.get('/download', function (req, res) {
+	res.download("generatedFiles/generatedTest.js");
 });
 
 app.post('/echoJson', jsonParser, function (request, response) {

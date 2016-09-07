@@ -1,35 +1,35 @@
-var input = `
-{
-	"uri": "some dummy uri",
-	"actions": [
-		{
-			"class": ".addButton",
-			"action": "click"
-		},
-		{
-			"class": ".header",
-			"expected": {
-				"compare": "text",
-				"value": "My Header"
-			}
-		}, {
-				"class": ".asdfdsfsdf button",
-				"action": "click"
-		}, {
-				"class": ".closeButton",
-				"action": "click"
-		},
-		{
-			"class": ".closeButton",
-			"expected": {
-				"compare": "text",
-				"value": "gray"
-			}
-		}
-	]
-}
-`;
-var viewTestItBuilder = require('./viewTestItBuilder.js');
+//var input = `
+//{
+//	"uri": "some dummy uri",
+//	"actions": [
+//		{
+//			"class": ".addButton",
+//			"action": "click"
+//		},
+//		{
+//			"class": ".header",
+//			"expected": {
+//				"compare": "text",
+//				"value": "My Header"
+//			}
+//		}, {
+//				"class": ".asdfdsfsdf button",
+//				"action": "click"
+//		}, {
+//				"class": ".closeButton",
+//				"action": "click"
+//		},
+//		{
+//			"class": ".closeButton",
+//			"expected": {
+//				"compare": "text",
+//				"value": "gray"
+//			}
+//		}
+//	]
+//}
+//`;
+var viewTestItBuilder = require('./viewTestItBuilder2.js');
 
 function viewTest(input) {
 

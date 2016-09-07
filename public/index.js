@@ -1,6 +1,6 @@
 angular
 	.module('AnyoneCanAutomate', ['ngMaterial'])
-	.controller('AutomaterCtrl', function ($scope, $sce) {
+	.controller('AutomaterCtrl', function ($scope, $sce, $http, $window) {
 
 		/**
 		 * Controls whether each panel is collapsed or not.
@@ -19,9 +19,11 @@ angular
 		$scope.actionsList = [
 			{
 				name: 'Action 1',
+				class: '.some class'
 			},
 			{
-				name: 'Action 2'
+				name: 'Action 2',
+				id: 'some id'
 			}
 		];
 
@@ -59,4 +61,18 @@ angular
 				action.isAdded = false;
 			}
 		};
+
+		$scope.generateCode = function () {
+			console.log($scope.actionsList);
+			var payload = {};
+			payload.uri = "some uri alskdfhalskjdf";
+			payload.actions = $scope.actionsList.filter(function (item) {
+				return item.isAdded;
+			});
+		
+			$http.post('/generateViewTest', JSON.stringify(payload)).then(function() {
+					$window.open('/download');
+			});
+			
+		}
 	});
